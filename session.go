@@ -279,6 +279,7 @@ func ParseURL(url string) (*DialInfo, error) {
 	source := ""
 	setName := ""
 	poolLimit := 0
+	ssl := false
 	for k, v := range uinfo.options {
 		switch k {
 		case "authSource":
@@ -289,6 +290,8 @@ func ParseURL(url string) (*DialInfo, error) {
 			service = v
 		case "replicaSet":
 			setName = v
+		case "ssl":
+			ssl = v
 		case "maxPoolSize":
 			poolLimit, err = strconv.Atoi(v)
 			if err != nil {
